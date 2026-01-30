@@ -11,7 +11,7 @@ const Footer = () => {
   const footerLinks = [
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
-    { name: 'Work', href: '#work' },
+    { name: 'How We Work', href: '#how-we-work' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -28,18 +28,17 @@ const Footer = () => {
 
       <div className="container px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Logo */}
+          {/* Logo - Fixed: No spaces */}
           <motion.div
-            className="flex items-center gap-1 text-xl font-bold"
+            className="flex items-center text-xl font-bold logo-text"
             whileHover={{ scale: 1.02 }}
           >
-            <span className="text-foreground">Evolv</span>
-            <span className="text-foreground">ate</span>
+            <span className="text-foreground">Evolvate</span>
             <span className="gradient-text">X</span>
           </motion.div>
 
           {/* Links */}
-          <nav className="flex items-center gap-8">
+          <nav className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
             {footerLinks.map((link) => (
               <motion.a
                 key={link.name}
@@ -72,7 +71,7 @@ const Footer = () => {
           viewport={{ once: true }}
         >
           <p className="text-sm text-muted-foreground">
-            © {currentYear} EvolvateX LLC. All rights reserved.
+            © {currentYear} EvolvateX LLC. All rights reserved. Texas, USA.
           </p>
           <p className="text-xs text-muted-foreground/60 mt-2">
             3402 Willow Brook Drive, Mansfield, TX 76063
