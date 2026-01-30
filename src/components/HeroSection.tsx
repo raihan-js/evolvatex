@@ -8,7 +8,7 @@ const HeroSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
+        staggerChildren: 0.15,
         delayChildren: 0.3,
       },
     },
@@ -20,31 +20,16 @@ const HeroSection = () => {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        damping: 20,
-        stiffness: 100,
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
       },
     },
   };
 
-  const letterVariants = {
-    hidden: { opacity: 0, y: 50, rotateX: -90 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-  };
-
-  const headline = "Engineering the Next.";
+  const words = ["Engineering", "the", "Next."];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-visible">
       {/* Background effects */}
       <div className="absolute inset-0 mesh-gradient" />
       <ParticleField />
@@ -54,7 +39,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 scan-line pointer-events-none" />
 
       {/* Content */}
-      <div className="container relative z-10 px-6 py-32 text-center">
+      <div className="container relative z-10 px-6 py-32 md:py-40 text-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -64,45 +49,47 @@ const HeroSection = () => {
           {/* Eyebrow */}
           <motion.p
             variants={itemVariants}
-            className="text-xs sm:text-sm uppercase tracking-[0.3em] text-primary mb-8 font-medium"
+            className="text-xs sm:text-sm uppercase tracking-[0.3em] text-primary mb-6 md:mb-8 font-medium"
           >
             Evolving Intelligence
           </motion.p>
 
-          {/* Main Headline */}
-          <motion.h1 
-            className="heading-hero mb-8"
-            variants={containerVariants}
-          >
-            {headline.split('').map((char, index) => (
+          {/* Main Headline - Word by word animation */}
+          <h1 className="heading-hero mb-6 md:mb-8 overflow-visible">
+            {words.map((word, index) => (
               <motion.span
                 key={index}
-                variants={letterVariants}
-                className={char === ' ' ? 'inline-block w-4 sm:w-6' : 'inline-block gradient-text'}
-                style={{ display: char === ' ' ? 'inline-block' : 'inline-block' }}
+                className="inline-block gradient-text mr-3 sm:mr-4 md:mr-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.5 + index * 0.15,
+                  duration: 0.6,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
               >
-                {char === ' ' ? '\u00A0' : char}
+                {word}
               </motion.span>
             ))}
-          </motion.h1>
+          </h1>
 
           {/* Subheadline */}
           <motion.p
             variants={itemVariants}
-            className="body-large max-w-2xl mx-auto mb-12"
+            className="body-large max-w-2xl mx-auto mb-10 md:mb-12 px-4"
           >
             EvolvateX LLC builds AI-first mobile and web applications that turn 
             artificial intelligence into practical, reliable, and scalable products.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons with Glow */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center px-4"
           >
             <motion.a
               href="#services"
-              className="btn-primary inline-flex items-center gap-2 group"
+              className="btn-primary inline-flex items-center justify-center gap-2 group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -124,7 +111,7 @@ const HeroSection = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Contact Us
+              Get in Touch
             </motion.a>
           </motion.div>
         </motion.div>

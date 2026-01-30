@@ -2,31 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* EvolvateX Design System - Dark Premium AI Aesthetic */
 
 @layer base {
   :root {
-    --background: 240 23% 2%;
-    --foreground: 0 0% 98%;
+    --background: 240 30% 2%;
+    --foreground: 0 0% 100%;
 
-    --card: 240 20% 5%;
-    --card-foreground: 0 0% 98%;
+    --card: 240 25% 4%;
+    --card-foreground: 0 0% 100%;
+    --card-hover: 240 22% 8%;
 
-    --popover: 240 20% 5%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 240 25% 4%;
+    --popover-foreground: 0 0% 100%;
 
     --primary: 239 84% 67%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 17% 8%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 258 90% 66%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 240 17% 12%;
     --muted-foreground: 240 4% 65%;
 
-    --accent: 258 90% 66%;
+    --accent: 189 95% 48%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -41,23 +42,23 @@
     /* Custom EvolvateX tokens */
     --indigo: 239 84% 67%;
     --violet: 258 90% 66%;
-    --cyan: 189 95% 43%;
+    --cyan: 189 95% 48%;
     --glow: 271 91% 65%;
     
-    --text-primary: 0 0% 98%;
+    --text-primary: 0 0% 100%;
     --text-secondary: 240 4% 65%;
     --text-tertiary: 240 5% 34%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(239 84% 67%), hsl(258 90% 66%), hsl(189 95% 43%));
+    --gradient-hero: linear-gradient(135deg, hsl(239 84% 67%), hsl(258 90% 66%), hsl(189 95% 48%));
     --gradient-mesh: radial-gradient(ellipse at 20% 30%, hsl(239 84% 67% / 0.15) 0%, transparent 50%),
                      radial-gradient(ellipse at 80% 70%, hsl(258 90% 66% / 0.1) 0%, transparent 50%),
-                     radial-gradient(ellipse at 50% 50%, hsl(189 95% 43% / 0.08) 0%, transparent 60%);
+                     radial-gradient(ellipse at 50% 50%, hsl(189 95% 48% / 0.08) 0%, transparent 60%);
     --gradient-glow: radial-gradient(circle, hsl(271 91% 65% / 0.4) 0%, transparent 70%);
-    --gradient-border: linear-gradient(135deg, hsl(239 84% 67% / 0.5), hsl(258 90% 66% / 0.3), hsl(189 95% 43% / 0.5));
+    --gradient-border: linear-gradient(135deg, hsl(239 84% 67% / 0.5), hsl(258 90% 66% / 0.3), hsl(189 95% 48% / 0.5));
 
     /* Glass effects */
-    --glass-bg: hsl(240 20% 5% / 0.6);
+    --glass-bg: hsl(240 25% 4% / 0.7);
     --glass-border: hsl(240 17% 20% / 0.5);
 
     --sidebar-background: 240 20% 5%;
@@ -71,19 +72,20 @@
   }
 
   .dark {
-    --background: 240 23% 2%;
-    --foreground: 0 0% 98%;
-    --card: 240 20% 5%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 20% 5%;
-    --popover-foreground: 0 0% 98%;
+    --background: 240 30% 2%;
+    --foreground: 0 0% 100%;
+    --card: 240 25% 4%;
+    --card-foreground: 0 0% 100%;
+    --card-hover: 240 22% 8%;
+    --popover: 240 25% 4%;
+    --popover-foreground: 0 0% 100%;
     --primary: 239 84% 67%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 17% 8%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 258 90% 66%;
+    --secondary-foreground: 0 0% 100%;
     --muted: 240 17% 12%;
     --muted-foreground: 240 4% 65%;
-    --accent: 258 90% 66%;
+    --accent: 189 95% 48%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
@@ -103,8 +105,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Plus Jakarta Sans', 'Outfit', system-ui, sans-serif;
   }
 
   ::selection {
@@ -123,7 +125,7 @@
 
   .glass-card {
     @apply backdrop-blur-xl rounded-2xl border;
-    background: hsl(240 20% 5% / 0.7);
+    background: hsl(240 25% 4% / 0.7);
     border-color: hsl(240 17% 18% / 0.5);
   }
 
@@ -216,39 +218,58 @@
     100% { left: 200%; }
   }
 
-  /* Button variants */
+  /* Glowing Button - Primary */
   .btn-primary {
-    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
-    background: hsl(var(--primary));
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 relative overflow-hidden;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
     color: hsl(var(--primary-foreground));
+    box-shadow: 
+      0 0 20px hsl(var(--primary) / 0.4),
+      0 0 40px hsl(var(--primary) / 0.2),
+      0 0 60px hsl(var(--primary) / 0.1);
+    border: 1px solid hsl(var(--primary) / 0.5);
   }
 
   .btn-primary:hover {
-    @apply scale-[1.02];
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.4);
+    transform: translateY(-2px);
+    box-shadow: 
+      0 0 30px hsl(var(--primary) / 0.6),
+      0 0 60px hsl(var(--primary) / 0.4),
+      0 0 90px hsl(var(--primary) / 0.2);
   }
 
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Glowing Button - Outline */
   .btn-outline {
-    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300 border;
-    border-color: hsl(var(--border));
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 border;
+    border-color: hsl(var(--primary) / 0.5);
     color: hsl(var(--foreground));
     background: transparent;
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.2);
   }
 
   .btn-outline:hover {
     border-color: hsl(var(--primary));
     background: hsl(var(--primary) / 0.1);
+    box-shadow: 0 0 25px hsl(var(--primary) / 0.4);
+    transform: translateY(-2px);
   }
 
   /* Bento card */
   .bento-card {
-    @apply glass-card p-6 transition-all duration-500;
+    @apply relative rounded-[20px] p-8 transition-all duration-500;
+    background: hsl(240 25% 4% / 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--primary) / 0.1);
   }
 
   .bento-card:hover {
-    @apply scale-[1.02];
-    box-shadow: 0 0 40px hsl(var(--primary) / 0.15);
+    transform: translateY(-4px);
     border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.15);
   }
 
   /* Input styling */
@@ -268,6 +289,61 @@
   .input-field::placeholder {
     color: hsl(var(--muted-foreground));
   }
+
+  /* Spotlight effect for cards */
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    top: var(--mouse-y, 50%);
+    left: var(--mouse-x, 50%);
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Animated border beam */
+  .border-beam {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .border-beam::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from var(--angle, 0deg), transparent 60%, hsl(var(--primary)) 80%, transparent 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: rotate-border 4s linear infinite;
+  }
+
+  @keyframes rotate-border {
+    from { --angle: 0deg; }
+    to { --angle: 360deg; }
+  }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
 }
 
 @layer utilities {
@@ -277,9 +353,9 @@
 
   /* Typography */
   .heading-hero {
-    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight;
-    line-height: 1;
-    letter-spacing: -0.03em;
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
 
   .heading-section {
@@ -288,12 +364,36 @@
     letter-spacing: -0.02em;
   }
 
+  .heading-subsection {
+    @apply text-xl sm:text-2xl md:text-3xl font-semibold;
+    line-height: 1.2;
+  }
+
   .body-large {
-    @apply text-lg md:text-xl leading-relaxed;
+    @apply text-base sm:text-lg md:text-xl leading-relaxed;
+    color: hsl(var(--text-secondary));
+  }
+
+  .body-regular {
+    @apply text-base leading-relaxed;
     color: hsl(var(--text-secondary));
   }
 
   .mono {
     font-family: 'JetBrains Mono', monospace;
+  }
+
+  .logo-text {
+    letter-spacing: -0.02em;
+  }
+
+  /* Hide scrollbar for horizontal scroll sections */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }

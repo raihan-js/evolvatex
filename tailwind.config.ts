@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'Outfit', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
@@ -50,6 +50,7 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+          hover: "hsl(var(--card-hover))",
         },
         indigo: "hsl(var(--indigo))",
         violet: "hsl(var(--violet))",
@@ -96,6 +97,10 @@ export default {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(60px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -104,6 +109,7 @@ export default {
         pulse: "pulse 3s ease-in-out infinite",
         glow: "glow 3s ease-in-out infinite",
         shimmer: "shimmer 3s linear infinite",
+        "fade-up": "fade-up 0.6s ease-out",
       },
     },
   },
